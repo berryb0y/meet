@@ -4,11 +4,14 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 
 class App extends Component {
+  state = {
+    events:[]
+  }
   render() {
     return (
       <div className="App">
         <CitySearch />
-        <EventList />
+        <EventList events={this.state.events} />
       </div>
     );
   }
