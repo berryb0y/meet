@@ -12,16 +12,18 @@ import './nprogress.css';
 class App extends Component {
   state = {
     events:[],
-    locations:[]
+    locations:[],
+    numberOfEvents: '24'
   }
 
-  updateEvents = (location) => {
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
         events.filter((event) => event.location === location);
+      const filteredEvents = locationEvents.slice(0, eventCount);
       this.setState({
-        events: locationEvents
+        events: filteredEvents
       });
     });
   }
